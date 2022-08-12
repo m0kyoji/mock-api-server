@@ -1,0 +1,15 @@
+version: "3"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    command : bash -c 'json-server --watch db.json --port 5000 --host 0.0.0.0'
+    tty: true
+    volumes:
+      - .:/api
+    ports:
+      - "51000:5000"
+    networks:
+      - default
